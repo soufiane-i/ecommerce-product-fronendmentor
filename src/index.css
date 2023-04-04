@@ -1,0 +1,187 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+}
+
+button {
+  background-color: white;
+}
+
+body {
+  margin: 0;
+  font-family: "Kumbh Sans", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+nav {
+  height: 7vh;
+  padding: 0 8%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav__left,
+.nav__right {
+  display: flex;
+  align-items: center;
+}
+
+nav img {
+  display: flex;
+  height: 20px;
+}
+
+.cart,
+.menu {
+  margin-right: 20px;
+  height: 15px;
+}
+
+a {
+  font-size: 1.7rem;
+  font-weight: bold;
+  transform: translateY(-3px);
+  text-decoration: none;
+}
+a:visited {
+  text-decoration: none;
+  color: black;
+}
+
+main {
+  height: 93vh;
+}
+
+.carousel-root {
+  height: 40%;
+}
+
+.carousel {
+  height: 100%;
+}
+
+.next,
+.previous {
+  margin: 10px;
+  width: 10px;
+  height: 10px;
+}
+
+.product {
+  padding: 10px 30px;
+}
+
+.company {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: hsl(26, 100%, 55%);
+  text-align: left;
+  text-transform: uppercase;
+  margin: 8px 0;
+  margin-bottom: 15px;
+}
+
+h1 {
+  text-align: left;
+  margin: 0;
+  font-size: 1.6rem;
+  line-height: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.description {
+  font-size: 0.9rem;
+  text-align: left;
+  color: hsl(219, 9%, 45%);
+  line-height: 1.3rem;
+  margin: 20px 0;
+}
+
+.priceSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 25px 0;
+}
+
+.priceSection__left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 38%;
+  font-weight: bold;
+}
+
+.price {
+  font-size: 1.3rem;
+}
+
+.sale {
+  font-size: 0.7rem;
+  font-weight: bold;
+  background-color: hsl(25, 100%, 94%);
+  color: hsl(26, 100%, 55%);
+  border-radius: 5px;
+  padding: 3px 6px;
+}
+
+.oldPrice {
+  font-size: 0.8rem;
+  color: hsl(219, 9%, 45%);
+  text-decoration: line-through;
+}
+
+.counterSection {
+  display: flex;
+  align-items: center;
+  position: relative;
+  height: 45px;
+  background-color: hsl(223, 64%, 98%);
+  border-radius: 5px;
+}
+
+.counter {
+  width: 100%;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.minus,
+.plus {
+  top: 30%;
+  background-color: hsl(223, 64%, 98%);
+}
+
+.minus {
+  left: 5%;
+}
+
+.plus {
+  right: 5%;
+}
+
+.addOrRemove {
+  position: absolute;
+}
+
+.addButton {
+  position: relative;
+  width: 100%;
+  height: 45px;
+  background-color: hsl(26, 100%, 55%);
+  margin: 15px 0;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+}
+
+.addButton .cart {
+  position: absolute;
+  left: 30%;
+  filter: brightness(0) invert(1);
+}
