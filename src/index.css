@@ -6,6 +6,7 @@
 
 button {
   background-color: white;
+  cursor: pointer;
 }
 
 body {
@@ -26,6 +27,7 @@ nav {
 .nav__right {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 nav img {
@@ -51,7 +53,11 @@ a:visited {
 }
 
 main {
+  position: relative;
   height: 93vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .carousel-root {
@@ -184,4 +190,39 @@ h1 {
   position: absolute;
   left: 30%;
   filter: brightness(0) invert(1);
+}
+
+.nav__right .cart {
+  cursor: pointer;
+}
+
+.cartModal {
+  position: absolute;
+  top: 10px;
+  z-index: 2;
+  background-color: white;
+  width: 95%;
+  height: 32vh;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.cartModal__title {
+  height: 25%;
+  border-bottom: 2px solid hsl(223, 64%, 98%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cartModal__products {
+  height: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hidden {
+  display: none;
 }

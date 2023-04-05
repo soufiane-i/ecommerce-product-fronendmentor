@@ -4,7 +4,7 @@ import { Carousel } from "react-responsive-carousel";
 function Slider() {
   const arrowStyles = {
     position: "absolute",
-    zIndex: 2,
+    zIndex: 1,
     top: "calc(50% - 15px)",
     width: 35,
     height: 35,

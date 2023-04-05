@@ -1,7 +1,17 @@
+import { useState } from "react";
 import "./App.css";
 import Slider from "./components/slider";
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [isActive, setActive] = useState(false);
+
+  const [cart, setCart] = useState({});
+
+  const handleToggle = () => {
+    setActive(!isActive);
+  };
+
   return (
     <div className="App">
       <nav>
@@ -10,11 +20,22 @@ function App() {
           <a href="/">sneakers</a>
         </div>
         <div className="nav__right">
-          <img src="/images/icon-cart.svg" className="cart" alt="menu" />
+          <img
+            src="/images/icon-cart.svg"
+            className="cart"
+            alt="cart"
+            onClick={handleToggle}
+          />
           <img src="/images/image-avatar.png" className="avatar" alt="avatar" />
         </div>
       </nav>
       <main>
+        <div className={`cartModal ${isActive ? "" : "hidden"}`}>
+          <div className="cartModal__title">
+            <p>Cart</p>
+          </div>
+          <div className="cartModal__products">Your cart is empty</div>
+        </div>
         <Slider />
         <article className="product">
           <p className="company">Sneaker Company</p>
@@ -34,11 +55,19 @@ function App() {
             </div>
           </div>
           <div className="counterSection">
-            <p className="counter">0</p>
-            <button className="addOrRemove minus">
+            <p className="counter">{count}</p>
+            <button
+              className="addOrRemove minus"
+              onClick={() => {
+                if (count > 0) setCount(count - 1);
+              }}
+            >
               <img src="/images/icon-minus.svg" alt="minus" />
             </button>
-            <button className="addOrRemove plus ">
+            <button
+              className="addOrRemove plus"
+              onClick={() => setCount(count + 1)}
+            >
               <img src="/images/icon-plus.svg" alt="plus" />
             </button>
           </div>
