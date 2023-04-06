@@ -1,16 +1,21 @@
 import { useState } from "react";
 import "./App.css";
 import Slider from "./components/slider";
+import data from "./data/data.json";
 
 function App() {
   const [count, setCount] = useState(0);
   const [isActive, setActive] = useState(false);
 
-  const [cart, setCart] = useState({});
+  const [cart, setCart] = useState([]);
 
   const handleToggle = () => {
     setActive(!isActive);
   };
+
+  function addCart() {
+    setCart(data[0]);
+  }
 
   return (
     <div className="App">
@@ -34,24 +39,37 @@ function App() {
           <div className="cartModal__title">
             <p>Cart</p>
           </div>
-          <div className="cartModal__products">Your cart is empty</div>
+          <div className="cartModal__products">
+            <div className="productAdd">
+              <img
+                src={"/images/image-product-1-thumbnail.jpg"}
+                className="thumbnail"
+              />
+              <div className="productAdd__description">
+                <p>{data[0].title}</p>
+                <div className="prices">
+                  <p>
+                    ${data[0].price} x {count}
+                  </p>
+                  <p>${data[0].price * count}</p>
+                </div>
+              </div>
+              <img src="/images/icon-delete.svg" className="delete" />
+            </div>
+          </div>
         </div>
-        <Slider />
+        <Slider images={data[0].images} />
         <article className="product">
-          <p className="company">Sneaker Company</p>
-          <h1>Fall Limited Edition Sneakers</h1>
-          <p className="description">
-            These low-profile sneakers are your perfect casual wear companion.
-            Featuring a durable rubber outer sole, they’ll withstand everything
-            the weather can offer.
-          </p>
+          <p className="company">{data[0].company}</p>
+          <h1>{data[0].title}</h1>
+          <p className="description">{data[0].description}</p>
           <div className="priceSection">
             <div className="priceSection__left">
-              <p className="price">$125.00</p>
-              <p className="sale">50%</p>
+              <p className="price">${data[0].price * (data[0].sale / 100)}</p>
+              <p className="sale">{data[0].sale}%</p>
             </div>
             <div className="priceSection__right">
-              <p className="oldPrice">$250.00</p>
+              <p className="oldPrice">${data[0].price}</p>
             </div>
           </div>
           <div className="counterSection">
@@ -71,8 +89,8 @@ function App() {
               <img src="/images/icon-plus.svg" alt="plus" />
             </button>
           </div>
-          <button className="addButton">
-            <img src="/images/icon-cart.svg" alt="cart" className="cart" />
+          <button className="addButton" onClick={addCart}>
+            <img src={"/images/icon-cart.svg"} alt="cart" className="cart" />
             <p>Add to cart</p>
           </button>
         </article>

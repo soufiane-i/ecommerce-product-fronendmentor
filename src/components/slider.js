@@ -1,7 +1,7 @@
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
 
-function Slider() {
+function Slider({ images }) {
   const arrowStyles = {
     position: "absolute",
     zIndex: 1,

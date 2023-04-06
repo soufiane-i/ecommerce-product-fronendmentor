@@ -202,7 +202,7 @@ h1 {
   z-index: 2;
   background-color: white;
   width: 95%;
-  height: 32vh;
+  height: auto;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -219,10 +219,44 @@ h1 {
 .cartModal__products {
   height: 75%;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  padding: 25px 10px;
 }
 
 .hidden {
   display: none;
+}
+
+.productAdd {
+  display: flex;
+  height: 20vw;
+  align-items: center;
+}
+
+.productAdd__description {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin: 0 15px;
+  padding: 5px 0;
+}
+
+.delete {
+  height: 20px;
+}
+
+.thumbnail {
+  height: 70%;
+  border-radius: 10%;
+}
+
+.prices {
+  display: flex;
+}
+
+.prices p:nth-child(1) {
+  color: hsl(219, 9%, 45%);
 }
