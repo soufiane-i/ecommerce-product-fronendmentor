@@ -1,62 +1,130 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import Slider from "./components/slider";
 import data from "./data/data.json";
 
 function App() {
   const [count, setCount] = useState(0);
-  const [isActive, setActive] = useState(false);
+  const [countChart, setCountChart] = useState(0);
+  const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState(false);
+  let menuRef = useRef();
 
   const [cart, setCart] = useState([]);
 
-  const handleToggle = () => {
-    setActive(!isActive);
-  };
-
   function addCart() {
-    setCart(data[0]);
+    if (count !== 0) {
+      setCart(data[0]);
+      setCountChart(countChart + count);
+    }
   }
+  function deleteCharts() {
+    setCart([]);
+    setCountChart(0);
+  }
+
+  useEffect(() => {
+    let handler = (e) => {
+      if (!menuRef.current.contains(e.target)) {
+        if (menuRef.current.classList.contains("navMenu2")) {
+          setOpenMenu(false);
+        } else setOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handler);
+  }, []);
 
   return (
     <div className="App">
       <nav>
         <div className="nav__left">
-          <img src="/images/icon-menu.svg" className="menu" alt="icon menu" />
+          <img
+            src="/images/icon-menu.svg"
+            className="menu"
+            alt="icon menu"
+            onClick={() => {
+              setOpenMenu(!openMenu);
+            }}
+          />
           <a href="/">sneakers</a>
         </div>
         <div className="nav__right">
-          <img
-            src="/images/icon-cart.svg"
-            className="cart"
-            alt="cart"
-            onClick={handleToggle}
-          />
+          <button>
+            <img
+              src="/images/icon-cart.svg"
+              className="cart"
+              alt="cart"
+              onClick={() => {
+                setOpen(!open);
+              }}
+            />
+            {countChart === 0 ? null : (
+              <p className="countchartNav">{countChart}</p>
+            )}
+          </button>
+
           <img src="/images/image-avatar.png" className="avatar" alt="avatar" />
+        </div>
+        <div className={`menu2 ${openMenu ? "" : "hidden"}`}>
+          <nav className="navMenu2" ref={menuRef}>
+            <div>
+              <img
+                src="/images/icon-close.svg"
+                alt="close"
+                className="close"
+                onClick={() => {
+                  setOpenMenu(!openMenu);
+                }}
+              />
+            </div>
+            <div>
+              <a>Collections</a>
+              <a>Men</a>
+              <a>Women</a>
+              <a>About</a>
+              <a>Contact</a>
+            </div>
+          </nav>
         </div>
       </nav>
       <main>
-        <div className={`cartModal ${isActive ? "" : "hidden"}`}>
+        <div className={`cartModal ${open ? "" : "hidden"}`} ref={menuRef}>
           <div className="cartModal__title">
             <p>Cart</p>
           </div>
-          <div className="cartModal__products">
-            <div className="productAdd">
-              <img
-                src={"/images/image-product-1-thumbnail.jpg"}
-                className="thumbnail"
-              />
-              <div className="productAdd__description">
-                <p>{data[0].title}</p>
-                <div className="prices">
-                  <p>
-                    ${data[0].price} x {count}
-                  </p>
-                  <p>${data[0].price * count}</p>
+          {cart.length === 0 ? (
+            <div className="emptyChart">
+              <p>Your cart is empty</p>
+            </div>
+          ) : (
+            <div className="cartModal__products">
+              <div className="productAdd">
+                <img
+                  src={"/images/image-product-1-thumbnail.jpg"}
+                  className="thumbnail"
+                  alt="thumbnail"
+                />
+                <div className="productAdd__description">
+                  <p>{cart.title}</p>
+                  <div className="prices">
+                    <p>
+                      ${cart.price} x {countChart}
+                    </p>
+                    <p>${cart.price * countChart}</p>
+                  </div>
+                </div>
+                <div className="delete">
+                  <button onClick={deleteCharts}>
+                    <img src="/images/icon-delete.svg" alt="delete" />
+                  </button>
                 </div>
               </div>
-              <img src="/images/icon-delete.svg" className="delete" />
+              <button className="checkout" onClick={addCart}>
+                Checkout
+              </button>
             </div>
-          </div>
+          )}
         </div>
         <Slider images={data[0].images} />
         <article className="product">
