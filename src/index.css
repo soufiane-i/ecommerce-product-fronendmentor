@@ -366,3 +366,58 @@ h1 {
 .hidden {
   display: none;
 }
+
+@media screen and (min-width: 768px) {
+  .topNav {
+    height: 12vh;
+    border-bottom: 1px solid hsl(240, 1%, 86%);
+    padding: 0;
+    width: 80vw;
+    margin: 0 auto;
+  }
+
+  .nav__left img {
+    display: none;
+  }
+
+  .nav__left a {
+    margin-right: 40px;
+  }
+
+  .navDesktop {
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  .navDesktop a {
+    font-size: 0.8rem;
+    font-weight: normal;
+    color: hsl(0, 0%, 39%);
+    padding: 0 5%;
+    margin-right: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transform: translateY(0);
+  }
+
+  .navDesktop a {
+    float: left;
+    display: flex;
+    color: #9c9c9c;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    border-bottom: 3px solid transparent;
+  }
+
+  .navDesktop a:hover {
+    border-bottom: 5px solid hsl(26, 100%, 55%);
+  }
+
+  main {
+    padding: 8vw 15vw;
+  }
+}

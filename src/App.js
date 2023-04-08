@@ -37,7 +37,7 @@ function App() {
 
   return (
     <div className="App">
-      <nav>
+      <nav className="topNav">
         <div className="nav__left">
           <img
             src="/images/icon-menu.svg"
@@ -48,6 +48,13 @@ function App() {
             }}
           />
           <a href="/">sneakers</a>
+          <div className="navDesktop">
+            <a href="">Collections</a>
+            <a href="">Men</a>
+            <a href="">Women</a>
+            <a href="">About</a>
+            <a href="">Contact</a>
+          </div>
         </div>
         <div className="nav__right">
           <button>
