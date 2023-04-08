@@ -9,6 +9,7 @@ function App() {
   const [open, setOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
   let menuRef = useRef();
+  let menu2Ref = useRef();
 
   const [cart, setCart] = useState([]);
 
@@ -26,9 +27,12 @@ function App() {
   useEffect(() => {
     let handler = (e) => {
       if (!menuRef.current.contains(e.target)) {
-        if (menuRef.current.classList.contains("navMenu2")) {
-          setOpenMenu(false);
+        if (menuRef.current.classList.contains("menu2")) {
         } else setOpen(false);
+      }
+
+      if (e.target.classList.contains("menu2")) {
+        setOpenMenu(false);
       }
     };
 
@@ -47,7 +51,9 @@ function App() {
               setOpenMenu(!openMenu);
             }}
           />
-          <a href="/">sneakers</a>
+          <a href="/" className="nav__title">
+            sneakers
+          </a>
           <div className="navDesktop">
             <a href="">Collections</a>
             <a href="">Men</a>
@@ -74,7 +80,7 @@ function App() {
           <img src="/images/image-avatar.png" className="avatar" alt="avatar" />
         </div>
         <div className={`menu2 ${openMenu ? "" : "hidden"}`}>
-          <nav className="navMenu2" ref={menuRef}>
+          <nav className="navMenu2" ref={menu2Ref}>
             <div>
               <img
                 src="/images/icon-close.svg"
@@ -147,27 +153,29 @@ function App() {
               <p className="oldPrice">${data[0].price}</p>
             </div>
           </div>
-          <div className="counterSection">
-            <p className="counter">{count}</p>
-            <button
-              className="addOrRemove minus"
-              onClick={() => {
-                if (count > 0) setCount(count - 1);
-              }}
-            >
-              <img src="/images/icon-minus.svg" alt="minus" />
-            </button>
-            <button
-              className="addOrRemove plus"
-              onClick={() => setCount(count + 1)}
-            >
-              <img src="/images/icon-plus.svg" alt="plus" />
+          <div className="actions">
+            <div className="counterSection">
+              <p className="counter">{count}</p>
+              <button
+                className="addOrRemove minus"
+                onClick={() => {
+                  if (count > 0) setCount(count - 1);
+                }}
+              >
+                <img src="/images/icon-minus.svg" alt="minus" />
+              </button>
+              <button
+                className="addOrRemove plus"
+                onClick={() => setCount(count + 1)}
+              >
+                <img src="/images/icon-plus.svg" alt="plus" />
+              </button>
+            </div>
+            <button className="addButton" onClick={addCart}>
+              <img src={"/images/icon-cart.svg"} alt="cart" className="cart" />
+              <p>Add to cart</p>
             </button>
           </div>
-          <button className="addButton" onClick={addCart}>
-            <img src={"/images/icon-cart.svg"} alt="cart" className="cart" />
-            <p>Add to cart</p>
-          </button>
         </article>
       </main>
     </div>

@@ -20,7 +20,7 @@ function Slider({ images }) {
   return (
     <Carousel
       showStatus={false}
-      showThumbs={false}
+      showThumbs={true}
       swipeable={false}
       infiniteLoop={true}
       renderArrowPrev={(onClickHandler, hasPrev, label) =>
