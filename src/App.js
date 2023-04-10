@@ -7,7 +7,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [countChart, setCountChart] = useState(0);
   const [open, setOpen] = useState(false);
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(true);
   let menuRef = useRef();
   let menu2Ref = useRef();
 
