@@ -32,7 +32,8 @@ function App() {
       }
 
       if (e.target.classList.contains("menu2")) {
-        setOpenMenu(false);
+        console.log("ok");
+        setOpenMenu(true);
       }
     };
 
@@ -79,8 +80,11 @@ function App() {
 
           <img src="/images/image-avatar.png" className="avatar" alt="avatar" />
         </div>
-        <div className={`menu2 ${openMenu ? "" : "hidden"}`}>
-          <nav className="navMenu2" ref={menu2Ref}>
+        <div className={`menu2 ${openMenu ? "" : "navMenu2Open"}`}>
+          <nav
+            className={`navMenu2 ${openMenu ? "" : "navOpen"}`}
+            ref={menu2Ref}
+          >
             <div>
               <img
                 src="/images/icon-close.svg"

@@ -51,7 +51,7 @@ nav {
 
 nav img {
   display: flex;
-  height: 20px;
+  height: 30px;
 }
 
 .cart,
@@ -93,7 +93,7 @@ main {
 }
 
 .product {
-  padding: 10px 30px;
+  padding: 10px 10px;
 }
 
 .company {
@@ -215,6 +215,7 @@ h1 {
   height: 50px;
   background-color: hsl(26, 100%, 55%);
   margin: 15px 0;
+  margin-bottom: 0;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -224,8 +225,7 @@ h1 {
 }
 
 .addButton .cart {
-  position: absolute;
-  left: 30%;
+  margin-right: 10px;
   filter: brightness(0) invert(1);
 }
 
@@ -335,11 +335,19 @@ h1 {
   top: 0;
   left: 0;
   z-index: 3;
-  height: 100%;
+  height: 100vh;
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.5s transform 0.01s;
+  transform: translateX(-100%);
+}
+
+.navMenu2Open {
+  background-color: rgba(0, 0, 0, 0.5);
+  transform: translateX(0%);
+  transition: transform 0.01s background-color 1s;
 }
 
 .menu2 nav {
@@ -364,8 +372,20 @@ h1 {
   cursor: pointer;
 }
 
+.navMenu2 {
+  transform: translateX(-100%);
+  transition: all 1s;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.navOpen {
+  transform: translateX(0%);
+  transition: all 1s;
+}
+
 .close {
   width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
@@ -375,6 +395,11 @@ h1 {
 
 .hidden {
   display: none;
+}
+
+.slide .selected div .products {
+  height: 400px;
+  object-fit: cover;
 }
 
 @media screen and (min-width: 768px) {
